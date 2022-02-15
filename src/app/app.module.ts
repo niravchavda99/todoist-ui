@@ -5,10 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { ClosedTodosComponent } from './closed-todos/closed-todos.component';
+import { OpenTodosComponent } from './open-todos/open-todos.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ClosedTodosComponent,
+    OpenTodosComponent
   ],
   imports: [
     BrowserModule,
