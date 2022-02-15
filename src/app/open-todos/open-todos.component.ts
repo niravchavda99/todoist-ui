@@ -30,6 +30,7 @@ export class OpenTodosComponent implements OnInit {
   }
 
   markTodoAsClosed(todoId: number | undefined): void {
+    console.log("HERWE");
     const todo = this.findTodoById(todoId);
     if(todo) todo.status = "CLOSED";
 

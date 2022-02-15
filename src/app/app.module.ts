@@ -7,12 +7,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { ClosedTodosComponent } from './closed-todos/closed-todos.component';
 import { OpenTodosComponent } from './open-todos/open-todos.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClosedTodosComponent,
-    OpenTodosComponent
+    OpenTodosComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

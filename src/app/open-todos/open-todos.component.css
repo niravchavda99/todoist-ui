@@ -1,17 +1,4 @@
-.card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 15px;
-  padding: 15px 20px;
-  margin: 20px 0;
-  position: relative;
-  color: #333;
-  border: 1px solid #ccc;
-}
-
-.header h2 {
-  font-size: 22px;
+h1 {
   font-weight: 600;
   text-align: center;
 }
@@ -74,11 +61,4 @@ button:disabled:hover {
 
 .text-center {
   text-align: center;
-}
-
-.mark-closed-checkbox {
-  cursor: pointer;
-  border: 2px solid #ddd;
-  width: 20px;
-  height: 20px;
 }

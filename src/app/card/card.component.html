@@ -1,0 +1,13 @@
+<div class="card">
+
+  <div><strong>{{index + 1}}.</strong> {{title}}</div>
+  <div>
+    <input
+      (click)="closedHandler.emit()"
+      *ngIf=showCheckbox
+      type="checkbox"
+      id="markAsClosed"
+      class="mark-closed-checkbox"
+      name="mark-closed-checkbox">
+  </div>
+</div>

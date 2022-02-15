@@ -7,14 +7,20 @@
     </div>
   </form>
 
-  <h2 *ngIf="todos.length < 1" class="text-center">You don't have any open todos!</h2>
-
-  <div *ngIf="todos.length > 0">
-    <div class="card" *ngFor="let todo of todos.reverse(); let i = index">
-      <div><strong>{{i + 1}}.</strong> {{todo.title}}</div>
-      <div>
-        <input (click)="markTodoAsClosed(todo.id)" type="checkbox" id="markAsClosed" class="mark-closed-checkbox" name="mark-closed-checkbox">
-      </div>
-    </div>
+  <div class="header">
+    <h1>Open Todos</h1>
   </div>
+
+    <div class="text-center" *ngIf="todos.length < 1 else displayTodos">You don't have any open todos!</div>
+
+  <ng-template #displayTodos>
+    <div *ngFor="let todo of todos.reverse(); let i = index">
+      <app-card
+        [title]=todo.title
+        [index]=i
+        (closedHandler)="markTodoAsClosed(todo.id)"
+        [showCheckbox]=true></app-card>
+    </div>
+  </ng-template>
+
 </div>

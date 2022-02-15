@@ -1,18 +1,19 @@
 <div class="container">
 
-  <h2 *ngIf="closedTodos.length < 1" class="text-center">You don't have any closed todos!</h2>
-
-  <div *ngIf="closedTodos.length > 0">
-    <div class="card" *ngFor="let todo of closedTodos; let i = index">
-      <div><strong>{{i + 1}}.</strong> {{todo.title}}</div>
-      <div>
-        <input
-          type="checkbox"
-          id="markAsClosed"
-          checked
-          class="mark-closed-checkbox"
-          name="mark-closed-checkbox">
-      </div>
-    </div>
+  <div class="header">
+    <h1>Closed Todos</h1>
   </div>
+
+  <div *ngIf="closedTodos.length < 1 else displayTodos" class="text-center">You don't have any closed todos!</div>
+
+  <ng-template #displayTodos>
+    <div *ngFor="let todo of closedTodos; let i = index">
+      <app-card
+        [title]=todo.title
+        [index]=i
+        (closedHandler)="null"
+        [showCheckbox]=false></app-card>
+    </div>
+  </ng-template>
+
 </div>
