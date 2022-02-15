@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Todo} from "../todo";
 import {TodoService} from "../todo.service";
 import {NgForm} from "@angular/forms";
@@ -17,7 +17,7 @@ export class OpenTodosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.todoService.get().subscribe(todos => this.todos = todos);
+    this.todoService.getOpenTodos().subscribe(todos => this.todos = todos);
   }
 
   onSubmit(form: NgForm) {
@@ -29,4 +29,18 @@ export class OpenTodosComponent implements OnInit {
     });
   }
 
+  markTodoAsClosed(todoId: number | undefined): void {
+    const todo = this.findTodoById(todoId);
+    if(todo) todo.status = "CLOSED";
+
+    this.todoService.updateTodo(todo).subscribe(updatedTodo => {
+      if (updatedTodo.status === "CLOSED") {
+        this.todos = this.todos.filter(todo => todo.id !== updatedTodo.id);
+      }
+    });
+  }
+
+  findTodoById(todoId: number | undefined) {
+    return this.todos.find(todo => todo.id === todoId);
+  }
 }

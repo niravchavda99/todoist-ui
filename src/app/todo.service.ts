@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Todo} from "./todo";
 
@@ -6,16 +6,25 @@ import {Todo} from "./todo";
   providedIn: 'root'
 })
 export class TodoService {
+  private apiEndPoint = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) {
 
   }
 
   save(todo: Todo) {
-    return this.httpClient.post<Todo>("http://localhost:8080/todos", todo);
+    return this.httpClient.post<Todo>(this.apiEndPoint + "/todos", todo);
   }
 
-  get() {
-    return this.httpClient.get<Todo[]>("http://localhost:8080/todos/open");
+  getOpenTodos() {
+    return this.httpClient.get<Todo[]>(this.apiEndPoint + "/todos/open");
+  }
+
+  getClosedTodos() {
+    return this.httpClient.get<Todo[]>(this.apiEndPoint + "/todos/closed");
+  }
+
+  updateTodo(todo: Todo | undefined) {
+    return this.httpClient.patch<Todo>(this.apiEndPoint + "/todos", todo);
   }
 }

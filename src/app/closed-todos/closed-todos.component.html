@@ -1,1 +1,92 @@
-<p>closed-todos works!</p>
+<style>
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin: 20px 0;
+    position: relative;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+
+  .header h2 {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  input {
+    flex-grow: 2;
+    border: none;
+    font-size: 16px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  button {
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  button:disabled {
+    background-color: #cccccc;
+    color: #333;
+    cursor: auto;
+  }
+
+  button:disabled:hover {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .container {
+    width: 600px;
+  }
+
+  .container, button, input {
+    font-size: 13pt;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mark-closed-checkbox {
+    cursor: pointer;
+    border: 2px solid #ddd;
+    width: 20px;
+    height: 20px;
+  }
+</style>
+
+<div class="container">
+
+  <h2 *ngIf="closedTodos.length < 1" class="text-center">You don't have any closed todos!</h2>
+
+  <div *ngIf="closedTodos.length > 0">
+    <div class="card" *ngFor="let todo of closedTodos; let i = index">
+      <div><strong>{{i + 1}}.</strong> {{todo.title}}</div>
+      <div>
+        <input
+          type="checkbox"
+          id="markAsClosed"
+          checked
+          class="mark-closed-checkbox"
+          name="mark-closed-checkbox">
+      </div>
+    </div>
+  </div>
+</div>

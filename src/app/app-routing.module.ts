@@ -11,6 +11,11 @@ const routes: Routes = [
   {
     path: "open",
     component: OpenTodosComponent
+  },
+  {
+    path: '',
+    redirectTo: 'open',
+    pathMatch: "full"
   }
 ];
 
